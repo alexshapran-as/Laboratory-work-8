@@ -1,8 +1,13 @@
+/*
+Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р° в„–8
+РђР»РµРєСЃРµР№ РЁР°РїСЂР°РЅ 
+Р“СЂСѓРїРїР°: РРЈ8-14
+*/
 #include<windows.h>
 #include<string.h>
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
-TCHAR szProgName[] = "Имя программы";
+TCHAR szProgName[] = "РРјСЏ РїСЂРѕРіСЂР°РјРјС‹";
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow)
 {
@@ -10,39 +15,39 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	MSG lpMsg;
 	WNDCLASS w;
 
-	w.lpszClassName = szProgName; //имя программы - объявлено выше
-	w.hInstance = hInstance; //идентификатор текущего приложения
-	w.lpfnWndProc = WndProc; //указатель на функцию окна
-	w.hCursor = LoadCursor(NULL, IDC_ARROW); //загружаем курсор
+	w.lpszClassName = szProgName; //РёРјСЏ РїСЂРѕРіСЂР°РјРјС‹ - РѕР±СЉСЏРІР»РµРЅРѕ РІС‹С€Рµ
+	w.hInstance = hInstance; //РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚РµРєСѓС‰РµРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ
+	w.lpfnWndProc = WndProc; //СѓРєР°Р·Р°С‚РµР»СЊ РЅР° С„СѓРЅРєС†РёСЋ РѕРєРЅР°
+	w.hCursor = LoadCursor(NULL, IDC_ARROW); //Р·Р°РіСЂСѓР¶Р°РµРј РєСѓСЂСЃРѕСЂ
 	w.hIcon = 0;
 	w.lpszMenuName = 0;
-	w.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH); //цвет фона окна
+	w.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH); //С†РІРµС‚ С„РѕРЅР° РѕРєРЅР°
 	w.style = CS_HREDRAW | CS_VREDRAW;
 	w.cbClsExtra = 0;
 	w.cbWndExtra = 0;
 
-	//Если не удалось зарегистрировать класс окна - выходим
+	//Р•СЃР»Рё РЅРµ СѓРґР°Р»РѕСЃСЊ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ РєР»Р°СЃСЃ РѕРєРЅР° - РІС‹С…РѕРґРёРј
 	if (!RegisterClass(&w))
 		return 0;
-	//Создадим окно в памяти, заполнив аргументы CreateWindow
-	hWnd = CreateWindow(szProgName, //Имя программы
-		"Лабораторная работа №8 Вариант 23", //Заголовок окна
-		WS_OVERLAPPEDWINDOW, //Стиль окна - перекрывающееся
-		100, //положение окна на экране по х
-		100, //положение по у
-		500, //ширина
-		300, //высота
-		(HWND)NULL, //идентификатор родительского окна
-		(HMENU)NULL, //идентификатор меню
-		(HINSTANCE)hInstance, //идентификатор экземпляра программы
-		(HINSTANCE)NULL); //отсутствие дополнительных параметров
+	//РЎРѕР·РґР°РґРёРј РѕРєРЅРѕ РІ РїР°РјСЏС‚Рё, Р·Р°РїРѕР»РЅРёРІ Р°СЂРіСѓРјРµРЅС‚С‹ CreateWindow
+	hWnd = CreateWindow(szProgName, //РРјСЏ РїСЂРѕРіСЂР°РјРјС‹
+		"Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р° в„–8 Р’Р°СЂРёР°РЅС‚ 23", //Р—Р°РіРѕР»РѕРІРѕРє РѕРєРЅР°
+		WS_OVERLAPPEDWINDOW, //РЎС‚РёР»СЊ РѕРєРЅР° - РїРµСЂРµРєСЂС‹РІР°СЋС‰РµРµСЃСЏ
+		100, //РїРѕР»РѕР¶РµРЅРёРµ РѕРєРЅР° РЅР° СЌРєСЂР°РЅРµ РїРѕ С…
+		100, //РїРѕР»РѕР¶РµРЅРёРµ РїРѕ Сѓ
+		500, //С€РёСЂРёРЅР°
+		300, //РІС‹СЃРѕС‚Р°
+		(HWND)NULL, //РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂРѕРґРёС‚РµР»СЊСЃРєРѕРіРѕ РѕРєРЅР°
+		(HMENU)NULL, //РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРµРЅСЋ
+		(HINSTANCE)hInstance, //РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЌРєР·РµРјРїР»СЏСЂР° РїСЂРѕРіСЂР°РјРјС‹
+		(HINSTANCE)NULL); //РѕС‚СЃСѓС‚СЃС‚РІРёРµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ
 
-						  //Выводим окно из памяти на экран
+						  //Р’С‹РІРѕРґРёРј РѕРєРЅРѕ РёР· РїР°РјСЏС‚Рё РЅР° СЌРєСЂР°РЅ
 	ShowWindow(hWnd, nCmdShow);
-	//Обновим содержимое окна
+	//РћР±РЅРѕРІРёРј СЃРѕРґРµСЂР¶РёРјРѕРµ РѕРєРЅР°
 	UpdateWindow(hWnd);
 
-	//Цикл обработки сообщений
+	//Р¦РёРєР» РѕР±СЂР°Р±РѕС‚РєРё СЃРѕРѕР±С‰РµРЅРёР№
 
 	while (GetMessage(&lpMsg, NULL, 0, 0)) {
 		TranslateMessage(&lpMsg);
@@ -51,25 +56,25 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	return(lpMsg.wParam);
 }
 
-//Функция окна
+//Р¤СѓРЅРєС†РёСЏ РѕРєРЅР°
 LRESULT CALLBACK WndProc(HWND hWnd, UINT messg,
 	WPARAM wParam, LPARAM lParam)
 {
-	HDC hdc; //создаём контекст устройства
-	PAINTSTRUCT ps; //создаём экземпляр структуры графического вывода
+	HDC hdc; //СЃРѕР·РґР°С‘Рј РєРѕРЅС‚РµРєСЃС‚ СѓСЃС‚СЂРѕР№СЃС‚РІР°
+	PAINTSTRUCT ps; //СЃРѕР·РґР°С‘Рј СЌРєР·РµРјРїР»СЏСЂ СЃС‚СЂСѓРєС‚СѓСЂС‹ РіСЂР°С„РёС‡РµСЃРєРѕРіРѕ РІС‹РІРѕРґР°
 	LOGFONT lf;
 	HFONT hFont;
 	RECT r;
 	HBRUSH hBrush;
 	HPEN hPen;
 
-	//Цикл обработки сообщений
+	//Р¦РёРєР» РѕР±СЂР°Р±РѕС‚РєРё СЃРѕРѕР±С‰РµРЅРёР№
 	switch (messg)
 	{
-		//сообщение рисования
+		//СЃРѕРѕР±С‰РµРЅРёРµ СЂРёСЃРѕРІР°РЅРёСЏ
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-		//рисуем овал
+		//СЂРёСЃСѓРµРј РѕРІР°Р»
 		hBrush = CreateHatchBrush(HS_CROSS, RGB(8, 114, 255));
 		hPen = CreatePen(PS_DASHDOT, 1, RGB(255, 38, 77));
 		SelectObject(hdc, hBrush);
@@ -79,7 +84,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT messg,
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_MOUSEMOVE:
-		if (wParam & MK_RBUTTON) // Нажата правая клавиша
+		if (wParam & MK_RBUTTON) // РќР°Р¶Р°С‚Р° РїСЂР°РІР°СЏ РєР»Р°РІРёС€Р°
 		{
 			int x, y;
 			x = LOWORD(lParam);
@@ -99,15 +104,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT messg,
 		break;
 
 
-		//сообщение выхода - разрушение окна
+		//СЃРѕРѕР±С‰РµРЅРёРµ РІС‹С…РѕРґР° - СЂР°Р·СЂСѓС€РµРЅРёРµ РѕРєРЅР°
 	case WM_DESTROY:
-		PostQuitMessage(0); //Посылаем сообщение выхода с кодом 0 - нормальное завершение
+		PostQuitMessage(0); //РџРѕСЃС‹Р»Р°РµРј СЃРѕРѕР±С‰РµРЅРёРµ РІС‹С…РѕРґР° СЃ РєРѕРґРѕРј 0 - РЅРѕСЂРјР°Р»СЊРЅРѕРµ Р·Р°РІРµСЂС€РµРЅРёРµ
 		//DeleteObject(hPen);
 		//DeleteObject(hBrush);
 		break;
 
 	default:
-		return(DefWindowProc(hWnd, messg, wParam, lParam)); //освобождаем очередь приложения от нераспознаных
+		return(DefWindowProc(hWnd, messg, wParam, lParam)); //РѕСЃРІРѕР±РѕР¶РґР°РµРј РѕС‡РµСЂРµРґСЊ РїСЂРёР»РѕР¶РµРЅРёСЏ РѕС‚ РЅРµСЂР°СЃРїРѕР·РЅР°РЅС‹С…
 	}
 	return 0;
 }
